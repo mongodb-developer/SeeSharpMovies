@@ -1,0 +1,12 @@
+﻿
+<div class="container">
+    <img src=@Movie.Poster height="150" width="150"/>
+    <h2>@Movie.Title</h2>
+    <h3>@Movie.Year</h3>
+</div>
+
+
+
+@code {
+    [Parameter] public Movie Movie { get; set; }
+}

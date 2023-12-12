@@ -1,7 +1,24 @@
 ﻿@page "/"
+@inject MongoDBService MongoDBService
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+@foreach(var movie in movies)
+{
+    <p>
+        @movie.Title
+    </p>
+    <MovieCard
+    Movie=@movie />
+}
 
-Welcome to your new app.
+
+@code 
+{
+    IEnumerable<Movie> movies;
+
+    protected override async Task OnInitializedAsync()
+    {
+        movies = MongoDBService.GetAllMovies();
+    }
+}

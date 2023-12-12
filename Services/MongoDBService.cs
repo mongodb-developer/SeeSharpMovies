@@ -22,11 +22,15 @@ public class MongoDBService : IMongoDBService
     }
     public IEnumerable<Movie> GetAllMovies()
     {
-        return _movies.Find(movie => true).ToList();
+        var movies = _movies.Find(movie => true).ToList();
+
+        return movies;
     }
 
     public Movie? GetMovieById(string id)
     {
-        return _movies.Find(restaurant => restaurant.Id == id).FirstOrDefault();
+        var movie = _movies.Find(restaurant => restaurant.Id == id).FirstOrDefault();
+
+        return movie;
     }       
 }
