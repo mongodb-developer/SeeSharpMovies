@@ -1,6 +1,11 @@
 using SeeSharpMovies.Components;
+using SeeSharpMovies.Models;
+using SeeSharpMovies.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var mongoDBSettings = builder.Configuration.GetSection("MongoDBSettings").Get<MongoDBSettings>();
+builder.Services.AddScoped(service => new MongoDBService(mongoDBSettings));
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
