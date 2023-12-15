@@ -1,3 +1,35 @@
+body {   
+    font-family: sans-serif;
+    font-size: 1rem;
+    background-color: #24323f;
+    color: #ffffff;
+}
+
+.moviecard-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+
+}
+
+.moviedetails {}
+
+.moviedetails-year {
+    border-radius: 20%;
+    background: #90e718;
+    padding: .25em .75em;
+    margin-right: 4px;
+    color: #6F18E7;
+    font-size: .9rem;
+    font-family: "Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif";
+}
+
+.moviedetails-title {
+  
+}
+
 h1:focus {
     outline: none;
 }
@@ -20,9 +52,9 @@ h1:focus {
     color: white;
 }
 
-    .blazor-error-boundary::after {
-        content: "An error has occurred."
-    }
+.blazor-error-boundary::after {
+    content: "An error has occurred."
+}
 
 .darker-border-checkbox.form-check-input {
     border-color: #929292;

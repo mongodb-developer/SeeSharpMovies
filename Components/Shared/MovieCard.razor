@@ -1,11 +1,18 @@
 ﻿
-<div class="container">
-    <img src=@Movie.Poster height="150" width="150"/>
-    <h2>@Movie.Title</h2>
-    <h3>@Movie.Year</h3>
-</div>
 
-
+    @if(Movie.Poster is null)
+{
+    <div
+        style="width: 150px; height: 150px; background-color: black; color: white; display: flex; align-items: center; justify-content: center;">
+        Image Unavailable
+  </div>
+}
+else {
+    <img src=@Movie.Poster height="150" width="150" />
+}
+    
+    <p class="moviedetails-title">@Movie.Title</p>   
+    <span class="moviedetails-year">@Movie.Year</span>
 
 @code {
     [Parameter] public Movie Movie { get; set; }

@@ -1,19 +1,26 @@
 ﻿@page "/"
 @inject MongoDBService MongoDBService
 
-<PageTitle>Home</PageTitle>
-
-@foreach(var movie in movies)
-{
-    <p>
-        @movie.Title
-    </p>
-    <MovieCard
-    Movie=@movie />
-}
 
 
-@code 
+
+
+    <h1>Movies</h1>
+
+    <div class="moviecard-container">
+
+        @foreach (var movie in movies)
+        {
+            <div class="col-md-1">
+                <MovieCard Movie="@movie" />
+            </div>
+        }
+
+    </div>
+
+
+
+@code
 {
     IEnumerable<Movie> movies;
 
