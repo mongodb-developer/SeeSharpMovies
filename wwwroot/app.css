@@ -1,33 +1,58 @@
-body {   
+body, html {   
     font-family: sans-serif;
     font-size: 1rem;
     background-color: #24323f;
-    color: #ffffff;
+    color: #ffffff;   
+}
+
+.content {
+    display: flex;
+    height: 100%;
+    z-index: 1;
+}
+
+.top-bar {
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    box-shadow: 0 0px 3px rgba(0,0,0,0.4);   
+    margin-bottom: 3rem; 
+    background-color: #929292;         
+}
+
+.top-bar a {
+    text-decoration: none;
+    color: rgb(76, 175, 80); 
+    font-size: 2em;  
 }
 
 .moviecard-container {
-    display: grid;
+    display: grid;  
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(10, 1fr);
     grid-column-gap: 5px;
     grid-row-gap: 5px;
-
+    text-align: center;
 }
 
 .moviedetails {}
 
+
 .moviedetails-year {
     border-radius: 20%;
-    background: #90e718;
+    background: rgb(76, 175, 80);
     padding: .25em .75em;
-    margin-right: 4px;
+    margin: 4px;
     color: #6F18E7;
     font-size: .9rem;
     font-family: "Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif";
 }
 
 .moviedetails-title {
-  
+   
+    max-width: 50%;
 }
 
 h1:focus {
