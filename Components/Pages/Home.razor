@@ -14,41 +14,33 @@
 <div class="pagination-controls">
     <button disabled="@isPreviousDisabled" @onclick="GoToPreviousPage"> Previous</button>
     <span>Page @currentPage</span>
-    <button @onclick="GoToNextPage" disabled="@isNextDisabled">Next</button>
-
-    <label >
-        
-    </label>
+    <button @onclick="GoToNextPage" disabled="@isNextDisabled">Next</button>  
 </div>
 
 @code {
-    // Assuming you have these variables defined
+   
     bool isPreviousDisabled;
     bool isNextDisabled;
     int currentPage = 2;
-    int pageSize = 25;
+    int pageSize = 25; 
 
-    private string? newHeading;
-
-    // Add your logic to fetch movies
+   
     IEnumerable<Movie> movies;
 
     private void GoToPreviousPage()
     {
-        newHeading = $"Last changed at {DateTime.Now}";
+       
         if (currentPage > 1)
         {
-            currentPage--;
-            // Fetch movies for the new page
+            currentPage--;           
             movies = MongoDBService.GetMoviesPerPage(currentPage, pageSize);
         }
     }
 
     private void GoToNextPage()
     {
-        newHeading = $"Last changed at {DateTime.Now}";
+      
         currentPage++;
-        // Fetch movies for the new page
         movies = MongoDBService.GetMoviesPerPage(currentPage, pageSize);
     }
 
