@@ -7,19 +7,21 @@ body, html {
 
 .content {
     display: flex;
+    flex-direction:column;
     height: 100%;
     z-index: 1;
+    justify-content: center;
+    align-items: center;
 }
 
 .top-bar {
     height: 5rem;
     display: flex;
     justify-content: center;
-    align-items: center;
-    color: white;
-    box-shadow: 0 0px 3px rgba(0,0,0,0.4);   
+    box-shadow: 0 0px 6px rgba(0,0,0,0.4);   
     margin-bottom: 3rem; 
-    background-color: #929292;         
+    background-color: transparent;    
+    width: 100%;
 }
 
 .top-bar a {
@@ -29,12 +31,23 @@ body, html {
 }
 
 .moviecard-container {
-    display: grid;  
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(10, 1fr);
-    grid-column-gap: 5px;
-    grid-row-gap: 5px;
-    text-align: center;
+  display: flex;
+  flex-wrap: wrap;   
+  justify-content: space-evenly;  
+}
+
+.moviecard-special {
+   
+}
+
+.moviecard {
+    display: flex;
+    flex-direction: column;
+    flex-basis: calc(33.333% - 10px);
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    margin-bottom: 20px;
 }
 
 .moviedetails {}
@@ -53,6 +66,15 @@ body, html {
 .moviedetails-title {
    
     max-width: 50%;
+}
+
+.pagination-controls {
+    font-size: 1.5em;
+}
+
+.pagination-controls button {
+    font-size: 0.75em;
+    border-radius: 20%;
 }
 
 h1:focus {

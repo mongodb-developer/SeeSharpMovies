@@ -7,7 +7,10 @@ namespace SeeSharpMovies.Services
     {      
         public IEnumerable<Movie> GetAllMovies();
 
+        public IEnumerable<Movie> GetMoviesPerPage(int pageNumber, int pageSize);
+
         public Movie? GetMovieById(string id);
+
         
     }
 }

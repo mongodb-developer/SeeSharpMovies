@@ -1,25 +1,59 @@
 ﻿@page "/"
 @inject MongoDBService MongoDBService
+@rendermode InteractiveServer
 
-    <div class="moviecard-container">
+<div class="moviecard-container">
+    @foreach (var movie in movies)
+    {
+        <div class="moviecard">
+            <MovieCard Movie="@movie" />
+        </div>
+    }
+</div>
 
-        @foreach (var movie in movies)
-        {
-            <div class="col-md-1">
-                <MovieCard Movie="@movie" />
-            </div>
-        }
+<div class="pagination-controls">
+    <button disabled="@isPreviousDisabled" @onclick="GoToPreviousPage"> Previous</button>
+    <span>Page @currentPage</span>
+    <button @onclick="GoToNextPage" disabled="@isNextDisabled">Next</button>
 
-    </div>
+    <label >
+        
+    </label>
+</div>
 
+@code {
+    // Assuming you have these variables defined
+    bool isPreviousDisabled;
+    bool isNextDisabled;
+    int currentPage = 2;
+    int pageSize = 25;
 
+    private string? newHeading;
 
-@code
-{
+    // Add your logic to fetch movies
     IEnumerable<Movie> movies;
+
+    private void GoToPreviousPage()
+    {
+        newHeading = $"Last changed at {DateTime.Now}";
+        if (currentPage > 1)
+        {
+            currentPage--;
+            // Fetch movies for the new page
+            movies = MongoDBService.GetMoviesPerPage(currentPage, pageSize);
+        }
+    }
+
+    private void GoToNextPage()
+    {
+        newHeading = $"Last changed at {DateTime.Now}";
+        currentPage++;
+        // Fetch movies for the new page
+        movies = MongoDBService.GetMoviesPerPage(currentPage, pageSize);
+    }
 
     protected override async Task OnInitializedAsync()
     {
-        movies = MongoDBService.GetAllMovies();
+        movies = MongoDBService.GetMoviesPerPage(currentPage, pageSize);        
     }
 }

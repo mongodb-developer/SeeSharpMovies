@@ -27,6 +27,15 @@ public class MongoDBService : IMongoDBService
         return movies;
     }
 
+    public IEnumerable<Movie> GetMoviesPerPage(int pageNumber, int pageSize)
+    {
+        var movies = _movies.Find(movie => true)
+            .Skip((pageNumber - 1) * pageSize)
+            .Limit(pageSize).ToList();
+
+        return movies;
+    }
+
     public Movie? GetMovieById(string id)
     {
         var movie = _movies.Find(restaurant => restaurant.Id == id).FirstOrDefault();
