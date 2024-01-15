@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34321.82
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeSharpMovies", "SeeSharpMovies.csproj", "{C1DD1869-A0A2-4AFA-90DA-B9B31C436459}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeeSharpMovies", "SeeSharpMovies.csproj", "{C1DD1869-A0A2-4AFA-90DA-B9B31C436459}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeSharpMovies.Test", "SeeSharpMovies.Test\SeeSharpMovies.Test.csproj", "{40D273D4-031A-46AF-8DA4-8E274F7F79B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C1DD1869-A0A2-4AFA-90DA-B9B31C436459}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1DD1869-A0A2-4AFA-90DA-B9B31C436459}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1DD1869-A0A2-4AFA-90DA-B9B31C436459}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40D273D4-031A-46AF-8DA4-8E274F7F79B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40D273D4-031A-46AF-8DA4-8E274F7F79B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40D273D4-031A-46AF-8DA4-8E274F7F79B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40D273D4-031A-46AF-8DA4-8E274F7F79B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
