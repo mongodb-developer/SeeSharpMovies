@@ -2,6 +2,16 @@
 @inject MongoDBService MongoDBService
 @rendermode InteractiveServer
 
+<header class="top-bar">
+    <div class="top-row">
+        <a href="/">See Sharp Movies</a>
+        <div class="form-inline search-bar">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
+        </div>
+    </div>
+</header>
+
 <div class="moviecard-container">
     @foreach (var movie in movies)
     {

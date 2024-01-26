@@ -13,21 +13,30 @@ body, html {
     justify-content: center;
     align-items: center;
 }
-
 .top-bar {
     height: 5rem;
     display: flex;
+    flex-direction: flex;
     justify-content: center;
     box-shadow: 0 0px 6px rgba(0,0,0,0.4);   
     margin-bottom: 3rem; 
     background-color: transparent;    
     width: 100%;
+    text-align: center;
 }
 
 .top-bar a {
     text-decoration: none;
     color: rgb(76, 175, 80); 
     font-size: 2em;  
+}
+
+.search-bar {
+    padding: 5%;
+}
+
+.search-bar button {
+    padding: 4px;
 }
 
 .moviecard-container {
