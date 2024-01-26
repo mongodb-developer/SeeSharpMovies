@@ -61,7 +61,7 @@ public class MongoDBService : IMongoDBService
 
         // define and run pipeline
         var movies = _movies.Aggregate()
-            .Search(Builders<Movie>.Search.Autocomplete(movie => movie.Title, textToSearch), indexName: "title")
+            .Search(Builders<Movie>.Search.Autocomplete(movie => movie.Title, textToSearch, fuzzy: fuzzyOptions), indexName: "title")
             .Project<Movie>(Builders<Movie>.Projection
                 .Exclude(movie => movie.Id))
             .ToList();
