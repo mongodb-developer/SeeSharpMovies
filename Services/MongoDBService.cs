@@ -1,5 +1,7 @@
-﻿using SeeSharpMovies.Models;
+﻿using MongoDB.Bson.Serialization.Conventions;
+using SeeSharpMovies.Models;
 using MongoDB.Driver;
+using MongoDB.Driver.Search;
 
 namespace SeeSharpMovies.Services;
 
@@ -41,5 +43,29 @@ public class MongoDBService : IMongoDBService
         var movie = _movies.Find(restaurant => restaurant.Id == id).FirstOrDefault();
 
         return movie;
+    }
+
+    public IEnumerable<Movie> MovieSearchByText(string textToSearch)
+    {
+        var camelCaseConvention = new ConventionPack { new CamelCaseElementNameConvention() };
+        ConventionRegistry.Register("CamelCase", camelCaseConvention, type => true);
+        
+        // define fuzzy options
+        SearchFuzzyOptions fuzzyOptions = new SearchFuzzyOptions()
+        {
+            MaxEdits = 1,
+            PrefixLength = 1,   
+            MaxExpansions = 256
+        };
+
+
+        // define and run pipeline
+        var movies = _movies.Aggregate()
+            .Search(Builders<Movie>.Search.Autocomplete(movie => movie.Title, textToSearch), indexName: "title")
+            .Project<Movie>(Builders<Movie>.Projection
+                .Exclude(movie => movie.Id))
+            .ToList();
+
+        return movies;
     }       
 }

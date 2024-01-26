@@ -6,8 +6,11 @@
     <div class="top-row">
         <a href="/">See Sharp Movies</a>
         <div class="form-inline search-bar">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
+            <input class="form-control mr-sm-2"
+                   type="search" placeholder="Search" 
+                   aria-label="Search" 
+                   @oninput="OnSearchInput" @bind="searchTerm">
+            <button class="btn btn-outline-success my-2 my-sm-0" @onclick="SearchMovies">Search</button>
         </div>
     </div>
 </header>
@@ -34,6 +37,9 @@
     int currentPage = 2;
     int pageSize = 25; 
 
+    string searchTerm;
+    Timer debounceTimer;
+    int _debounceInterval = 500;
    
     IEnumerable<Movie> movies;
 
@@ -54,8 +60,43 @@
         movies = MongoDBService.GetMoviesPerPage(currentPage, pageSize);
     }
 
+    private void SearchMovies()
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            movies = MongoDBService.GetAllMovies();
+        }
+        else
+        {
+            movies = MongoDBService.MovieSearchByText(searchTerm);
+        }
+    }
+
     protected override async Task OnInitializedAsync()
     {
         movies = MongoDBService.GetMoviesPerPage(currentPage, pageSize);        
+    }
+
+    void DebounceSearch(object state)
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            SearchMovies();
+        }
+        else
+        {
+            InvokeAsync(() =>
+            {
+                SearchMovies();
+                StateHasChanged();
+            });
+        }
+    }
+    
+    void OnSearchInput(ChangeEventArgs e)
+    {
+            searchTerm = e.Value.ToString();
+            debounceTimer?.Dispose();
+            debounceTimer = new Timer(DebounceSearch, null, _debounceInterval, Timeout.Infinite);
     }
 }
