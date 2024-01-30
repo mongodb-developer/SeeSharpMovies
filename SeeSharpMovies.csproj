@@ -10,4 +10,29 @@
     <PackageReference Include="MongoDB.Driver" Version="2.23.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="SeeSharpMovies.Test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="SeeSharpMovies.Test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="SeeSharpMovies.Test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="SeeSharpMovies.Test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="SeeSharpMovies.Test\bin\Debug\net8.0\SeeSharpMovies.Test.deps.json" />
+    <_ContentIncludedByDefault Remove="SeeSharpMovies.Test\bin\Debug\net8.0\SeeSharpMovies.Test.runtimeconfig.json" />
+    <_ContentIncludedByDefault Remove="SeeSharpMovies.Test\obj\Debug\net8.0\SeeSharpMovies.Test.sourcelink.json" />
+    <_ContentIncludedByDefault Remove="SeeSharpMovies.Test\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="SeeSharpMovies.Test\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="SeeSharpMovies.Test\obj\SeeSharpMovies.Test.csproj.nuget.dgspec.json" />
+  </ItemGroup>
+
 </Project>
