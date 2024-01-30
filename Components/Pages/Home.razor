@@ -2,6 +2,10 @@
 @inject MongoDBService MongoDBService
 @rendermode InteractiveServer
 
+<header class="top-bar">
+        <a href="/">See Sharp Movies</a>
+    </header>
+
 <div class="moviecard-container">
     @foreach (var movie in movies)
     {
