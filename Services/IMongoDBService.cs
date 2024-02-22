@@ -11,6 +11,8 @@ namespace SeeSharpMovies.Services
 
         public Movie? GetMovieById(string id);
 
+        public IEnumerable<Movie> MovieSearch(string textToSearch);
+
         
     }
 }

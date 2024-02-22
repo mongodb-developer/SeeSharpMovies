@@ -4,8 +4,10 @@ using SeeSharpMovies.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var openAPIKey = builder.Configuration.GetValue<string>("OpenAPIKey");
 var mongoDBSettings = builder.Configuration.GetSection("MongoDBSettings").Get<MongoDBSettings>();
-builder.Services.AddScoped(service => new MongoDBService(mongoDBSettings));
+builder.Services.AddScoped(service => new MongoDBService(mongoDBSettings, openAPIKey));
+
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
