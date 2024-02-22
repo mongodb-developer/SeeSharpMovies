@@ -11,8 +11,14 @@ else {
     <img src=@Movie.Poster height="150" width="150" />
 }
     
-    <p class="moviedetails-title">@Movie.Title</p>   
-    <text class="moviedetails-year">@Movie.Year</text>
+<p class="moviedetails-title">@Movie.Title</p> 
+    
+@if (!string.IsNullOrEmpty(@Movie.Year))
+{
+    <span class="moviedetails-year">
+        <text>@Movie.Year</text> 
+    </span>
+}
 
 @code {
     [Parameter] public Movie Movie { get; set; }

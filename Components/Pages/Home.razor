@@ -4,6 +4,13 @@
 
 <header class="top-bar">
         <a href="/">See Sharp Movies</a>
+    <div class="form-inline search-bar">
+        <input class="form-control mr-sm-2"
+               type="search" placeholder="Search"
+               aria-label="Search"               
+               @bind="searchTerm">
+        <button class="btn btn-outline-success my-2 my-sm-0" @onclick="SearchMovies">Search</button>
+    </div>
     </header>
 
 <div class="moviecard-container">
@@ -22,14 +29,32 @@
 </div>
 
 @code {
-   
+
     bool isPreviousDisabled;
     bool isNextDisabled;
-    int currentPage = 2;
-    int pageSize = 25; 
+    int currentPage = 1;
+    int pageSize = 25;
 
-   
+    string searchTerm = "";
     IEnumerable<Movie> movies;
+
+    protected override async Task OnInitializedAsync()
+    {
+        movies = MongoDBService.GetMoviesPerPage(currentPage, pageSize);
+    }
+
+    private void SearchMovies()
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            movies = MongoDBService.GetAllMovies();
+        }
+        else
+        {
+            movies = MongoDBService.MovieSearch(searchTerm);
+        }
+    }
+
 
     private void GoToPreviousPage()
     {
@@ -46,10 +71,5 @@
       
         currentPage++;
         movies = MongoDBService.GetMoviesPerPage(currentPage, pageSize);
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        movies = MongoDBService.GetMoviesPerPage(currentPage, pageSize);        
     }
 }
