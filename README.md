@@ -17,6 +17,12 @@ This branch is an example of using Atlas Vector Search, which is also available 
 
 It is the end result of following the tutorial on [Adding MongoDB Atlas Vector Search to a .NET Blazor C# Application](https://www.mongodb.com/developer/languages/csharp/vector-search-with-csharp-driver/).
 
+### Prerequisites
+
+1. [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) - the current latest version of .NET.
+2. MongoDB Atlas Account with the free-forever [M0 tier cluster](https://mdb.link/deploy-free-cluster) deployed.
+3. The [sample data](https://mdb.link/load-sample-data) loaded into your cluster.
+4. The [connection string](https://mdb.link/getting-your-connection-string) for your cluster.
 
 ## Running the application
 
@@ -39,4 +45,6 @@ You can then start the application with
 ```bash
 dotnet run
 ```
+## Disclaimer
 
+Use at your own risk; not a supported MongoDB product

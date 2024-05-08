@@ -38,7 +38,7 @@ public class MongoDBService : IMongoDBService
 
     public Movie? GetMovieById(string id)
     {
-        var movie = _movies.Find(restaurant => restaurant.Id == id).FirstOrDefault();
+        var movie = _movies.Find(movie => movie.Id == id).FirstOrDefault();
 
         return movie;
     }       
