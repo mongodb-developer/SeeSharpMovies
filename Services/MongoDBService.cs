@@ -11,7 +11,7 @@ public class MongoDBService : IMongoDBService
     private readonly IMongoDatabase _mongoDatabase;
     private readonly IMongoCollection<Movie> _movies;
     private readonly string _openAPIKey;
-    private readonly OpenAI_API.OpenAIAPI _openAI;
+
     private readonly HttpClient _httpClient = new HttpClient();
 
     public MongoDBService(MongoDBSettings settings, string openAPIKey)
@@ -20,7 +20,7 @@ public class MongoDBService : IMongoDBService
         _mongoDatabase = _client.GetDatabase(settings.DatabaseName);
         _movies = _mongoDatabase.GetCollection<Movie>("embedded_movies");
         _openAPIKey = openAPIKey;
-        _openAI = new OpenAI_API.OpenAIAPI(_openAPIKey);
+
     }
 
     public MongoDBService()
