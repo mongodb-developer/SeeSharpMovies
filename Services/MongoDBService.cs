@@ -65,6 +65,7 @@ public class MongoDBService : IMongoDBService
             .VectorSearch(movie => movie.PlotEmbedding, vector, 150, vectorOptions)
             .Project<Movie>(Builders<Movie>.Projection
             .Include(m => m.Title)
+            .Include(m => m.Poster)
             .Include(m => m.Plot))
             .ToList();
 
